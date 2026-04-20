@@ -9,11 +9,6 @@ let lastClicked = null;
 let startTime;
 let timerInterval;
 
-const levels = {
-    a: [[0,1,0,0,1],[1,0,1,1,1],[1,0,1,0,1],[0,0,1,0,0],[1,1,1,1,1]],
-    b: [[0,1,1,1,0],[0,0,1,0,0],[0,0,1,1,0],[0,1,1,1,1],[1,0,1,0,0]],
-    c: [[1,1,0,0,0],[0,0,1,1,1],[1,0,0,1,1],[0,1,1,0,1],[1,0,0,0,0]]
-};
 
 function initBoard() {
     boardElement.innerHTML = '';
@@ -103,14 +98,38 @@ function startTimer() {
     }, 1000);
 }
 
+let allLevels = {}; 
+
+
+async function fetchLevels() {
+    try {
+        const response = await fetch('./levels.json'); 
+        if (!response.ok) throw new Error("Не вдалося завантажити JSON");
+        allLevels = await response.json(); 
+        loadLevel('a');
+    } catch (error) {
+        console.error("Помилка AJAX:", error);
+        winMessage.innerText = "Помилка завантаження даних!";
+    }
+}
+
+
 function loadLevel(key) {
-    gameState = levels[key].map(row => [...row]);
+    if (!allLevels[key]) return;
+
+    
+    gameState = allLevels[key].map(row => [...row]);
+    
     moves = 0;
     lastClicked = null;
     winMessage.innerText = '';
     updateUI();
     startTimer();
 }
+
+
+initBoard();
+fetchLevels();
 
 function checkWin() {
     if (gameState.flat().every(v => v === 0)) {
