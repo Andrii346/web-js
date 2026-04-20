@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="uk">
+
+<head>
+    <meta charset="UTF-8">
+    <title>5x5 Lights Out</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="game-container">
+        <h1>5x5 LightsOut</h1>
+        <div class="controls">
+            <button onclick="loadLevel('a')">Варіант A</button>
+            <button onclick="loadLevel('b')">Варіант B</button>
+            <button onclick="loadLevel('c')">Варіант C</button>
+            <button onclick="solveGame()" style="background: #4CAF50; color: white;">Розв'язати авто</button>
+        </div>
+        <div id="board" class="board"></div>
+        <div class="stats">
+            <p>Час: <span id="timer">00:00</span></p>
+            <p>Кроків: <span id="move-count">0</span></p>
+            <p id="win-message"></p>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+
+</html>
