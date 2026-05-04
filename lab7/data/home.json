@@ -1,0 +1,9 @@
+{
+  "category_name": "Дім та Сад",
+  "items": [
+    { "id": 301, "name": "Лампа настільна", "shortname": "lamp", "description": "Регульована яскравість та колірна температура.", "price": "850" },
+    { "id": 302, "name": "Набір посуду", "shortname": "dishes", "description": "Керамічний набір на 6 персон.", "price": "2300" },
+    { "id": 303, "name": "Крісло-мішок", "shortname": "beanbag", "description": "Lorem ipsum для вашого максимального релаксу.", "price": "1400" },
+    { "id": 304, "name": "Зволожувач повітря", "shortname": "humidifier", "description": "Підтримує здоровий клімат у кімнаті.", "price": "1950" }
+  ]
+}
